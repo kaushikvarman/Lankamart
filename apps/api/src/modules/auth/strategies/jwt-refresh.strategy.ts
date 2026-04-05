@@ -2,13 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
+import { UserRole } from '@prisma/client';
 import { JwtPayload } from '@/common/decorators/current-user.decorator';
 import { AppConfig } from '@/config/configuration';
 
 interface JwtRefreshTokenPayload {
   sub: string;
   email: string;
-  role: string;
+  role: UserRole;
   iat: number;
   exp: number;
 }

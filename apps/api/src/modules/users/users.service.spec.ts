@@ -384,7 +384,7 @@ describe('UsersService', () => {
 
       const result = await service.adminUpdateUser('user-1', {
         status: UserStatus.SUSPENDED,
-      });
+      }, UserRole.SUPER_ADMIN);
 
       expect(result.status).toBe(UserStatus.SUSPENDED);
       expect(prisma.user.update).toHaveBeenCalledWith({
@@ -403,7 +403,7 @@ describe('UsersService', () => {
 
       const result = await service.adminUpdateUser('user-1', {
         role: UserRole.VENDOR,
-      });
+      }, UserRole.SUPER_ADMIN);
 
       expect(result.role).toBe(UserRole.VENDOR);
     });
@@ -414,7 +414,7 @@ describe('UsersService', () => {
       await expect(
         service.adminUpdateUser('nonexistent', {
           status: UserStatus.SUSPENDED,
-        }),
+        }, UserRole.SUPER_ADMIN),
       ).rejects.toThrow(NotFoundException);
     });
   });

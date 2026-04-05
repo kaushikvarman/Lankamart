@@ -153,9 +153,10 @@ describe('UsersController', () => {
         status: UserStatus.SUSPENDED,
       });
 
-      const result = await controller.adminUpdateUser('user-1', dto);
+      const mockAdmin: JwtPayload = { sub: 'admin-1', email: 'admin@test.com', role: UserRole.SUPER_ADMIN };
+      const result = await controller.adminUpdateUser(mockAdmin, 'user-1', dto);
 
-      expect(service.adminUpdateUser).toHaveBeenCalledWith('user-1', dto);
+      expect(service.adminUpdateUser).toHaveBeenCalledWith('user-1', dto, UserRole.SUPER_ADMIN);
       expect(result.status).toBe(UserStatus.SUSPENDED);
     });
   });
