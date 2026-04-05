@@ -6,6 +6,9 @@ import configuration, { AppConfig } from '@/config/configuration';
 import { validate } from '@/config/env.validation';
 import { AuthModule } from '@/modules/auth/auth.module';
 import { UsersModule } from '@/modules/users/users.module';
+import { VendorsModule } from '@/modules/vendors/vendors.module';
+import { CategoriesModule } from '@/modules/categories/categories.module';
+import { ProductsModule } from '@/modules/products/products.module';
 
 @Module({
   imports: [
@@ -29,6 +32,9 @@ import { UsersModule } from '@/modules/users/users.module';
 
     AuthModule,
     UsersModule,
+    VendorsModule,
+    CategoriesModule,
+    ProductsModule,
   ],
 })
 export class AppModule {}
