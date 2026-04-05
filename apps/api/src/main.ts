@@ -14,6 +14,7 @@ async function bootstrap(): Promise<void> {
 
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: ['log', 'error', 'warn', 'debug', 'verbose'],
+    rawBody: true, // Required for Stripe webhook signature verification
   });
 
   const configService = app.get(ConfigService<AppConfig, true>);
